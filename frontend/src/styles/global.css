@@ -1,10 +1,10 @@
 
 :root{--bg:#070a1a;--p:#7c3aed;--b:#3b82f6;--c:#22d3ee;--m:#e879f9;--ok:#22c55e;--no:#ef4444;--t:#eef2ff;--g:rgba(255,255,255,.07);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%}
-body{background:radial-gradient(circle at 20% 0,#2a1565 0,transparent 45%),radial-gradient(circle at 90% 100%,#0b3a6e 0,transparent 40%),var(--bg);background-attachment:fixed;color:var(--t);font:16px/1.4 system-ui,"Segoe UI",sans-serif;overflow-x:hidden}
+body{background:radial-gradient(circle at 20% 0,#2a1565 0,transparent 45%),radial-gradient(circle at 90% 100%,#0b3a6e 0,transparent 40%),var(--bg);background-attachment:fixed;color:var(--t);font:16px/1.5 'Plus Jakarta Sans',system-ui,"Segoe UI",sans-serif;overflow-x:hidden}
 body:before{content:"";position:fixed;inset:0;background:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px) 0 0/40px 40px;pointer-events:none}
-#root{position:relative;max-width:1200px;margin:auto;padding:16px 16px 96px}
-h1,h2,h3{margin:0}.logo{font-weight:900;letter-spacing:.08em;background:linear-gradient(90deg,var(--c),var(--m));-webkit-background-clip:text;background-clip:text;color:transparent}
+#root{position:relative;max-width:1280px;margin:auto;padding:0 16px 96px}
+h1,h2,h3,h4{margin:0;font-family:'Outfit',sans-serif}.logo{font-family:'Outfit',sans-serif;font-weight:900;letter-spacing:.04em;background:linear-gradient(90deg,var(--c),var(--m));-webkit-background-clip:text;background-clip:text;color:transparent}
 .panel{background:var(--g);border:1px solid rgba(124,58,237,.5);border-radius:18px;padding:20px;backdrop-filter:blur(10px);box-shadow:0 0 30px rgba(124,58,237,.2)}
 .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.c{justify-content:center;text-align:center}
 .btn{background:linear-gradient(135deg,var(--p),var(--b));color:#fff;border:0;border-radius:12px;padding:12px 20px;font-weight:800;font-size:1rem;cursor:pointer;min-height:44px;box-shadow:0 0 18px rgba(59,130,246,.4)}
