@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>TechLogicQ Live</title>
+<style>
+:root{--bg:#070a1a;--p:#7c3aed;--b:#3b82f6;--c:#22d3ee;--m:#e879f9;--ok:#22c55e;--no:#ef4444;--t:#eef2ff;--g:rgba(255,255,255,.07);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+body{background:radial-gradient(circle at 20% 0,#2a1565 0,transparent 45%),radial-gradient(circle at 90% 100%,#0b3a6e 0,transparent 40%),var(--bg);background-attachment:fixed;color:var(--t);font:16px/1.4 system-ui,"Segoe UI",sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;background:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px) 0 0/40px 40px;pointer-events:none}
+#root{position:relative;max-width:1200px;margin:auto;padding:16px 16px 96px}
+h1,h2,h3{margin:0}.logo{font-weight:900;letter-spacing:.08em;background:linear-gradient(90deg,var(--c),var(--m));-webkit-background-clip:text;background-clip:text;color:transparent}
+.panel{background:var(--g);border:1px solid rgba(124,58,237,.5);border-radius:18px;padding:20px;backdrop-filter:blur(10px);box-shadow:0 0 30px rgba(124,58,237,.2)}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.c{justify-content:center;text-align:center}
+.btn{background:linear-gradient(135deg,var(--p),var(--b));color:#fff;border:0;border-radius:12px;padding:12px 20px;font-weight:800;font-size:1rem;cursor:pointer;min-height:44px;box-shadow:0 0 18px rgba(59,130,246,.4)}
+.btn.g{background:var(--g);border:1px solid rgba(255,255,255,.2);box-shadow:none}.btn.big{font-size:1.4rem;padding:16px 36px}.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn:focus-visible,.ans:focus-visible{outline:3px solid var(--c);outline-offset:2px}
+.pin{font-size:clamp(2.5rem,8vw,5rem);font-weight:900;letter-spacing:.2em;color:var(--c);text-shadow:0 0 24px var(--c)}
+.pl{display:inline-flex;flex-direction:column;align-items:center;width:84px;animation:pop .4s both,bob 3s ease-in-out infinite}
+.pl span:first-child{font-size:2rem;background:var(--g);border-radius:50%;width:54px;height:54px;display:grid;place-items:center;border:2px solid var(--p)}.pl small{font-size:.75rem;opacity:.85}
+@keyframes pop{from{transform:scale(0);opacity:0}}@keyframes bob{50%{transform:translateY(-4px)}}
+.q{font-size:clamp(1.3rem,3.5vw,2.4rem);font-weight:800;text-align:center;margin:18px 0;animation:rise .4s both}
+@keyframes rise{from{transform:translateY(16px);opacity:0}}
+.tag{background:var(--g);border:1px solid rgba(255,255,255,.2);padding:3px 10px;border-radius:99px;font-size:.8rem}
+.bar{height:8px;background:var(--g);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--c),var(--m));transition:width .4s}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.ans{display:flex;gap:12px;align-items:center;text-align:left;min-height:84px;border:2px solid transparent;border-radius:16px;padding:14px 18px;color:#fff;font-size:clamp(1rem,2.2vw,1.35rem);font-weight:700;cursor:pointer;animation:rise .4s both;transition:transform .15s,opacity .3s,filter .3s}
+.ans:hover:not(:disabled){transform:translateY(-2px)}.ans b{font-size:1.6rem}
+.a0{background:linear-gradient(135deg,#be123c,#e11d48)}.a1{background:linear-gradient(135deg,#1d4ed8,#3b82f6)}.a2{background:linear-gradient(135deg,#a16207,#eab308)}.a3{background:linear-gradient(135deg,#15803d,#22c55e)}
+.ans.sel{border-color:#fff;box-shadow:0 0 24px #fff8}.ans.dim{opacity:.35;filter:grayscale(.6)}.ans.ok{border-color:var(--ok);box-shadow:0 0 28px var(--ok);opacity:1;filter:none}.ans.no{opacity:.45;filter:saturate(.5)}
+.ring{position:relative;width:84px;height:84px}.ring svg{transform:rotate(-90deg)}.ring em{position:absolute;inset:0;display:grid;place-items:center;font-style:normal;font-size:1.6rem;font-weight:900}
+.cd{position:fixed;inset:0;display:grid;place-items:center;background:#070a1aee;z-index:20}.cd b{font-size:clamp(8rem,30vw,18rem);color:var(--c);text-shadow:0 0 60px var(--p);animation:zoom .8s both}
+@keyframes zoom{from{transform:scale(2.4);opacity:0}60%{opacity:1}to{transform:scale(1)}}
+.dist{display:flex;align-items:flex-end;gap:14px;height:150px;margin:12px 0}.dist div{flex:1;text-align:center;font-size:.85rem}.dist i{display:block;border-radius:8px 8px 0 0;transition:height .8s;min-height:4px}
+.lb{position:relative}.lr{position:absolute;left:0;right:0;height:58px;display:flex;align-items:center;gap:12px;padding:0 14px;background:var(--g);border:1px solid rgba(255,255,255,.12);border-radius:14px;transition:transform .8s cubic-bezier(.2,.9,.3,1)}
+.lr.me{border-color:var(--c);box-shadow:0 0 16px #22d3ee66}.lr .n{margin-left:auto;font-weight:900;font-variant-numeric:tabular-nums}.up{color:var(--ok)}.dn{color:var(--no)}
+.pod{display:flex;align-items:flex-end;justify-content:center;gap:10px;margin:20px 0}.pod div{width:min(30%,170px);text-align:center;border-radius:14px 14px 0 0;padding:10px;animation:rise .8s both;background:linear-gradient(#fbbf2455,#7c3aed33);border:1px solid #fbbf24}
+.fl{position:fixed;bottom:90px;font-size:2.4rem;pointer-events:none;animation:fly 2s forwards;z-index:15}@keyframes fly{to{transform:translateY(-60vh);opacity:0}}
+.host{position:fixed;left:0;right:0;bottom:0;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:#0b1030f2;border-top:1px solid var(--p);z-index:30}.host .row{justify-content:center}.host .btn{padding:8px 12px;font-size:.85rem;min-height:40px}
+.think{font-size:3rem;animation:bob 1.4s infinite}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.45);pointer-events:none;animation:fade .5s both}@keyframes fade{from{opacity:0}}
+.lbt{animation:zoomT .7s both;text-shadow:0 0 22px var(--c)}@keyframes zoomT{from{transform:scale(.7);opacity:0}}
+.lb2{position:relative;height:320px;overflow:hidden;margin-top:8px}.lb2 .lr{height:56px;animation:rise .5s backwards}
+@keyframes fill{from{width:0}to{width:100%}}.autobar i{animation:fill 7s linear forwards}
+.suspense{font-size:1.5rem;text-align:center;margin:20px;animation:pulse .6s infinite alternate}@keyframes pulse{to{opacity:.3}}
+.pts{display:block;font-size:2.4rem;color:var(--ok);animation:zoom .6s both;text-shadow:0 0 18px var(--ok)}
+.big3{display:block;font-size:clamp(7rem,28vw,16rem);color:var(--c);text-shadow:0 0 50px var(--p);animation:zoom .8s both,sh .3s}@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.cf{position:fixed;top:-20px;width:9px;height:14px;animation:fall 3s linear infinite;z-index:10;pointer-events:none}@keyframes fall{to{transform:translateY(105vh) rotate(540deg)}}
+.skip{position:fixed;right:12px;top:calc(8px + env(safe-area-inset-top,0px));z-index:25}.spot{background:radial-gradient(circle at 50% 0,#fbbf2455,transparent 70%);border-radius:18px;padding:20px}.trophy{font-size:5rem;animation:zoom 1s both}.pod span{display:block}
+@media(max-width:700px){.lb2{height:290px}.lb2 .lr{gap:6px;padding:0 8px;font-size:.9rem}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style></head><body><div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/htm@3.1.1/dist/htm.umd.js"></script>
+<script>
+const {useReducer,useEffect,useState,useRef}=React;const html=htm.bind(React.createElement);
+/* ===== DATA (mock, demo only) ===== */
+const Q=[
+["What is the output of 10/4 in Java when both are int?","Basics","Easy",["2.5","2","3","Error"],1,"Integer division drops the decimal part, so 10/4 = 2."],
+["Which keyword prevents a class from being inherited?","OOP","Easy",["static","abstract","final","private"],2,"A final class cannot be extended."],
+["Which collection does NOT allow duplicate elements?","Collections","Medium",["ArrayList","LinkedList","HashSet","Vector"],2,"Set implementations like HashSet store unique elements only."],
+["What does the == operator compare for two String objects?","Strings","Medium",["Content","References","Length","Hashcode"],1,"== compares references. Use equals() to compare content."],
+["Which exception is checked?","Exceptions","Medium",["NullPointerException","IOException","ArithmeticException","ClassCastException"],1,"IOException must be handled or declared; the others are runtime exceptions."],
+["What is the default value of an int instance variable?","Basics","Easy",["null","undefined","0","-1"],2,"Instance int fields default to 0."],
+["Which Spring annotation marks a REST controller?","Spring Boot","Medium",["@Service","@RestController","@Entity","@Bean"],1,"@RestController = @Controller + @ResponseBody."],
+["What does i++ vs ++i differ in?","Operators","Hard",["Nothing","Value returned in expression","Speed only","Type"],1,"i++ returns the old value; ++i returns the new value."]
+].map((x,i)=>({id:i,q:x[0],cat:x[1],diff:x[2],o:x[3],a:x[4],e:x[5]}));
+const BOTS=[["Aarav","🦊"],["Meena","🐼"],["Kavin","🐯"],["Divya","🦄"],["Ravi","🐸"],["Sneha","🦉"],["Arun","🐙"],["Nila","🐱"],["Vijay","🐲"],["Priya","🦋"]];
+const mkPlayers=()=>[{id:0,name:"You",emoji:"😎",skill:0},...BOTS.map((b,i)=>({id:i+1,name:b[0],emoji:b[1],skill:.45+((i*37)%50)/100}))].map(p=>({...p,total:0,gain:0,streak:0,best:0,prev:0,log:[]}));
+/* ===== SCORING: 1000 base + up to 300 speed + streak 50 x (streak-1) capped 250; wrong = 0 ===== */
+const score=(ok,el,limit,streak)=>ok?1000+Math.round(300*Math.max(0,1-el/limit))+Math.min(250,50*Math.max(0,streak-1)):0;
+const H=(a,b)=>{let x=(Math.imul(a+1,2654435761)^Math.imul(b+7,40503))>>>0;x=Math.imul(x^(x>>>15),2246822519)>>>0;return(x%1000)/1000};
+const bot=(p,qi,limit)=>{const q=Q[qi],ok=H(p.id,qi)<p.skill;return{c:ok?q.a:(q.a+1+Math.floor(H(p.id,qi+99)*3))%4,el:1.5+H(p.id,qi+7)*limit*.8}};
+const rank=ps=>[...ps].sort((a,b)=>b.total-a.total||a.id-b.id);
+/* ===== STATE MACHINE ===== */
+const init=(limit=20)=>({phase:"lobby",qi:0,limit,left:limit,paused:false,ans:null,n:3,players:mkPlayers(),round:null});
+function reveal(s){ if(s.phase!=="question"&&s.phase!=="waiting")return s; // guard: score once
+ const el=s.limit-s.left,q=Q[s.qi],order=rank(s.players),counts=[0,0,0,0];let answered=0;
+ const players=s.players.map(p=>{const a=p.id===0?s.ans:(()=>{const b=bot(p,s.qi,s.limit);return b.el<=el+.01?b:null})();
+  const ok=!!a&&a.c===q.a,streak=ok?p.streak+1:0,pts=score(ok,a?a.el:0,s.limit,streak);if(a){counts[a.c]++;answered++}
+  return{...p,prev:order.findIndex(o=>o.id===p.id),gain:pts,streak,best:Math.max(p.best,streak),total:p.total+pts,log:[...p.log,{ok,pts,el:a?a.el:null,answered:!!a}]}});
+ return{...s,phase:"reveal",players,round:{counts,answered}}}
+function red(s,a){switch(a.t){
+ case"LIMIT":return s.phase==="lobby"?{...s,limit:a.v,left:a.v}:s;
+ case"START":return s.phase==="lobby"?{...init(s.limit),phase:"countdown"}:s;
+ case"CD":if(s.phase!=="countdown")return s;return s.n>0?{...s,n:s.n-1}:{...s,phase:"question",left:s.limit,ans:null};
+ case"PAUSE":return["question","waiting"].includes(s.phase)?{...s,paused:!s.paused}:s;
+ case"TICK":if(!["question","waiting"].includes(s.phase)||s.paused)return s;const left=Math.max(0,s.left-.1);return left<=.05?reveal({...s,left:0}):{...s,left};
+ case"ANSWER":if(s.phase!=="question"||s.paused||s.ans)return s;return{...s,phase:"waiting",ans:{c:a.c,el:s.limit-s.left}};
+ case"REVEAL":return reveal(s);
+ case"NEXT":if(s.phase==="reveal")return{...s,phase:"leaderboard"};
+  if(s.phase==="leaderboard")return s.qi+1>=Q.length?{...s,phase:"final"}:{...s,phase:"question",qi:s.qi+1,left:s.limit,ans:null,round:null};
+  if(s.phase==="final")return{...s,phase:"summary"};return s;
+ case"BACK":return init(s.limit);
+ case"REPLAY":return{...init(s.limit),phase:"countdown"};
+ default:return s}}
+/* ===== SOUND ===== */
+let ctx;const beep=(f,mute)=>{if(mute)return;try{ctx=ctx||new(window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=f;g.gain.value=.05;o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+.12)}catch(e){}};
+/* ===== COMPONENTS ===== */
+const DELAY={reveal:9000,lb:7000};
+function useCount(v,from){const[x,setX]=useState(from??v),r=useRef(from??v);useEffect(()=>{const f=r.current,t0=performance.now();let id;const st=n=>{const k=Math.min(1,(n-t0)/800);setX(Math.round(f+(v-f)*k));if(k<1)id=requestAnimationFrame(st);else r.current=v};id=requestAnimationFrame(st);return()=>cancelAnimationFrame(id)},[v]);return x}
+const Num=({v,from})=>html`<span>${useCount(v,from)}</span>`;
+function Ring({left,limit}){const f=left/limit,col=f<.25?"#ef4444":f<.5?"#eab308":"#22d3ee",R=36,C=2*Math.PI*R;
+ return html`<div class="ring" role="timer" aria-label=${Math.ceil(left)+" seconds left"}><svg width="84" height="84"><circle cx="42" cy="42" r=${R} stroke="#fff2" stroke-width="8" fill="none"/><circle cx="42" cy="42" r=${R} stroke=${col} stroke-width="8" fill="none" stroke-dasharray=${C} stroke-dashoffset=${C*(1-f)} stroke-linecap="round"/></svg><em>${Math.ceil(left)}</em></div>`}
+function Lobby({s,d}){const[joined,setJ]=useState(4);useEffect(()=>{if(joined>=s.players.length)return;const t=setTimeout(()=>setJ(j=>j+1),900);return()=>clearTimeout(t)},[joined]);
+ return html`<div class="panel c"><p class="tag">DEMO ROOM · simulated players</p><p>Join at techlogicq.app with PIN</p><div class="pin">482 913</div>
+ <div class="row c" style=${{margin:"16px 0"}}>${s.players.slice(0,joined).map(p=>html`<div class="pl" key=${p.id}><span>${p.emoji}</span><small>${p.name}${p.id?" ✓":""}</small></div>`)}</div>
+ <p>${joined} players ready · ${Q.length} questions · ${s.limit}s each</p>
+ <div class="row c" style=${{margin:"10px 0"}}>${Q.slice(0,4).map(q=>html`<span class="tag" key=${q.id}>${q.cat}</span>`)}<span class="tag">+more</span></div>
+ <button class="btn big" onClick=${()=>d({t:"START"})}>▶ Start Game</button></div>`}
+function Answers({s,d,hide}){const q=Q[s.qi],rev=s.phase==="reveal"&&!hide,locked=s.phase!=="question"||s.paused;
+ useEffect(()=>{const k=e=>{const i="1234".indexOf(e.key);if(i>=0)d({t:"ANSWER",c:i})};addEventListener("keydown",k);return()=>removeEventListener("keydown",k)},[]);
+ return html`<div class="grid" role="group" aria-label="Answers">${q.o.map((o,i)=>{const sel=s.ans&&s.ans.c===i;
+  const cls="ans a"+i+(rev?(i===q.a?" ok":" no"):sel?" sel":s.ans?" dim":"");
+  return html`<button key=${i} class=${cls} disabled=${locked&&!rev} aria-pressed=${sel} style=${{animationDelay:i*80+"ms"}} onClick=${()=>d({t:"ANSWER",c:i})}><b>${"▲◆●■"[i]}</b>${o}${rev&&i===q.a?" ✓":""}</button>`})}</div>`}
+function Leaderboard({s,d}){const ps=s.players,r=rank(ps),[go,setGo]=useState(false),last=s.qi+1>=Q.length,nq=Q[s.qi+1],pos=p=>r.findIndex(x=>x.id===p.id);
+ useEffect(()=>{const a=setTimeout(()=>setGo(true),700),b=setTimeout(()=>d({t:"NEXT"}),DELAY.lb);return()=>{clearTimeout(a);clearTimeout(b)}},[s.qi]);
+ let top=null;ps.forEach(p=>{const m=p.prev-pos(p);if(m>0&&(!top||m>top.m))top={id:p.id,m}});
+ const me=ps[0],mp=pos(me);
+ return html`<div><div class="ov"></div><div class="panel" style=${{position:"relative",zIndex:2}}><h2 class="lbt">Standings after Q${s.qi+1}</h2>
+ ${top?html`<span class="tag up">🚀 Biggest jump: ${ps.find(p=>p.id===top.id).name} ▲${top.m}</span>`:null}
+ <div class="lb2">${ps.filter(p=>pos(p)<5).map((p,i)=>{const cur=pos(p),shown=go?cur:p.prev,mv=p.prev-cur;
+  return html`<div key=${p.id} class=${"lr"+(p.id===0?" me":"")} style=${{transform:`translateY(${shown*64}px)`,animationDelay:i*90+"ms"}}><b>#${shown+1}</b><span style=${{fontSize:"1.5rem"}}>${p.emoji}</span><span>${p.name}</span>${p.streak>1?html`<span class="tag">🔥${p.streak}</span>`:null}${go&&p.gain?html`<span class="up">+${p.gain}</span>`:null}${go&&mv?html`<span class=${mv>0?"up":"dn"}>${mv>0?"▲"+mv:"▼"+-mv}</span>`:null}<span class="n"><${Num} v=${p.total} from=${p.total-p.gain}/></span></div>`})}</div>
+ ${mp>=5?html`<div class="lr me" style=${{position:"relative",marginTop:8,height:48}}><b>#${mp+1}</b><span>${me.emoji} You</span><span class="n">${me.total}</span></div>`:null}
+ <p style=${{margin:"12px 0 6px"}}>${last?"🏁 Final results are next!":"Next up: Q"+(s.qi+2)+" · "+nq.cat+" · "+nq.diff}</p><div class="bar autobar"><i></i></div>
+ <div class="row c" style=${{marginTop:10}}><button class="btn" onClick=${()=>d({t:"NEXT"})}>Skip animation / Continue ▸</button></div></div></div>`}
+function LeaderboardOld({players,compact,rev}){const r=rank(players),top=compact?5:5;
+ return html`<div class="lb" style=${{height:top*66}}>${players.map(p=>{const pos=r.findIndex(x=>x.id===p.id);if(pos>=top)return null;const mv=p.prev-pos;
+  return html`<div key=${p.id} class=${"lr"+(p.id===0?" me":"")} style=${{transform:`translateY(${pos*66}px)`}}><b>#${pos+1}</b><span style=${{fontSize:"1.6rem"}}>${p.emoji}</span><span>${p.name}</span>
+  ${p.streak>1?html`<span class="tag">🔥${p.streak}</span>`:null}${rev&&p.gain?html`<span class="up">+${p.gain}</span>`:null}${rev&&mv?html`<span class=${mv>0?"up":"dn"}>${mv>0?"▲"+mv:"▼"+-mv}</span>`:null}<span class="n"><${Num} v=${p.total}/></span></div>`})}</div>`}
+function Question({s,d}){const q=Q[s.qi];
+ return html`<div><div class="row" style=${{justifyContent:"space-between"}}><div class="row"><span class="tag">Q ${s.qi+1}/${Q.length}</span><span class="tag">${q.cat}</span><span class="tag">${q.diff}</span><span class="tag">up to 1,300 pts</span></div><${Ring} left=${s.left} limit=${s.limit}/></div>
+ <div class="bar" style=${{margin:"8px 0"}}><i style=${{width:(s.qi/Q.length*100)+"%"}}></i></div>
+ <h2 class="q" key=${s.qi}>${q.q}</h2>
+ ${s.phase==="waiting"?html`<${Waiting} s=${s}/>`:null}<${Answers} s=${s} d=${d}/>${s.paused?html`<p class="c tag">⏸ Paused by host</p>`:null}</div>`}
+function Waiting({s}){const el=s.limit-s.left,n=s.players.filter(p=>p.id&&bot(p,s.qi,s.limit).el<=el).length+1;
+ return html`<div class="panel c" style=${{marginBottom:14}}><span class="think">🤔</span> <b>Answer locked in!</b> ${n}/${s.players.length} answered<div class="bar" style=${{marginTop:8}}><i style=${{width:n/s.players.length*100+"%"}}></i></div><small>Pick a reaction below while others finish…</small></div>`}
+function Reveal({s,d}){const q=Q[s.qi],r=s.round,me=s.players[0],lg=me.log[me.log.length-1],mx=Math.max(1,...r.counts),[st,setSt]=useState(0);
+ useEffect(()=>{const a=setTimeout(()=>setSt(1),900),b=setTimeout(()=>setSt(2),1300),c=setTimeout(()=>d({t:"NEXT"}),DELAY.reveal);return()=>{clearTimeout(a);clearTimeout(b);clearTimeout(c)}},[s.qi]);
+ const bad=r.answered-r.counts[q.a],none=s.players.length-r.answered;
+ return html`<div><h2 class="q">${q.q}</h2><${Answers} s=${s} d=${d} hide=${st<1}/>
+ ${st<1?html`<p class="suspense">Locking in answers…</p>`:html`<div class="panel" style=${{marginTop:14}}><h3 style=${{color:lg.ok?"var(--ok)":"var(--no)"}}>${lg.answered?(lg.ok?"✓ Correct!":"✗ Not this time"):"⏱ No answer"}${me.streak>1?" · 🔥 streak "+me.streak:""}</h3>${lg.ok?html`<b class="pts">+<${Num} v=${lg.pts} from=${0}/></b>`:null}
+ <p>${q.e}</p><div class="dist">${r.counts.map((c,i)=>html`<div key=${i}>${c}<i style=${{height:st>=2?c/mx*110+"px":"4px",background:i===q.a?"var(--ok)":"#ef444499"}}></i>${"▲◆●■"[i]}</div>`)}</div>
+ <small>✅ ${r.counts[q.a]} correct · ❌ ${bad} incorrect · ⏱ ${none} no answer</small></div>`}
+ <div class="row c" style=${{marginTop:12}}><button class="btn" onClick=${()=>d({t:"NEXT"})}>Continue ▸</button></div></div>`}
+function RevealOld({s,d}){const q=Q[s.qi],r=s.round,me=s.players[0],lg=me.log[me.log.length-1],mx=Math.max(1,...r.counts);
+ return html`<div><h2 class="q">${q.q}</h2><${Answers} s=${s} d=${d}/>
+ <div class="panel" style=${{marginTop:14}}><h3 style=${{color:lg.ok?"var(--ok)":"var(--no)"}}>${lg.answered?(lg.ok?"✓ Correct! +"+lg.pts:"✗ Not this time (+0)"):"⏱ No answer (+0)"}${me.streak>1?" · 🔥 streak "+me.streak:""}</h3>
+ <p>${q.e}</p><div class="dist">${r.counts.map((c,i)=>html`<div key=${i}>${c}<i style=${{height:c/mx*110+"px",background:i===q.a?"var(--ok)":"#ef444499"}}></i>${"▲◆●■"[i]}</div>`)}</div>
+ <small>${r.counts[q.a]} correct · ${r.answered-r.counts[q.a]} incorrect · response rate ${Math.round(r.answered/s.players.length*100)}%</small></div></div>`}
+const Top5=({players})=>html`<div>${rank(players).slice(0,5).map((p,i)=>html`<p key=${p.id}>${["🥇","🥈","🥉"][i]||"#"+(i+1)} ${p.emoji} ${p.name} — ${p.total}</p>`)}</div>`;
+function Final({s,d,mute}){const[t,setT]=useState(0),ps=s.players,r=rank(ps);
+ useEffect(()=>{const i=setInterval(()=>setT(x=>x+1),1000);return()=>clearInterval(i)},[]);
+ useEffect(()=>{if(t>=18)d({t:"NEXT"});else if(t<3)beep(400+t*120,mute);else if(t>=4&&t<=6)beep(660+t*40,mute)},[t]);
+ const acc=p=>p.log.filter(l=>l.ok).length,r0=[...ps].sort((a,b)=>b.log[0].pts-a.log[0].pts||a.id-b.id),
+ imp=ps.map(p=>({p,v:r0.findIndex(x=>x.id===p.id)-r.findIndex(x=>x.id===p.id)})).sort((a,b)=>b.v-a.v||a.p.id-b.p.id)[0],
+ bs=[...ps].sort((a,b)=>b.best-a.best||a.id-b.id)[0],ac=[...ps].sort((a,b)=>acc(b)-acc(a)||b.total-a.total)[0],
+ fast=ps.flatMap(p=>p.log.filter(l=>l.ok&&l.el!=null).map(l=>({p,el:l.el}))).sort((a,b)=>a.el-b.el)[0],w=r[0],
+ awards=[["🔥","Longest streak",bs.name+" · "+bs.best],imp.v>0&&["🚀","Most improved",imp.p.name+" · +"+imp.v+" ranks"],["🎯","Accuracy champion",ac.name+" · "+acc(ac)+"/"+Q.length],fast&&["⚡","Fastest correct",fast.p.name+" · "+fast.el.toFixed(1)+"s"]].filter(Boolean),
+ conf=t>=6&&t<14?Array.from({length:28},(_,i)=>html`<span class="cf" key=${i} style=${{left:H(i,3)*100+"%",animationDelay:H(i,5)*1.5+"s",background:["#fbbf24","#22d3ee","#e879f9","#3b82f6"][i%4]}}></span>`):null;
+ return html`<div class="c"><button class="btn g skip" onClick=${()=>d({t:"NEXT"})}>Skip ▸▸</button>${conf}
+ ${t<4?html`<div><h2 class="logo" style=${{fontSize:"clamp(1.4rem,5vw,3rem)",marginTop:20}}>THE FINAL RESULTS ARE IN...</h2><b class="big3" key=${t}>${t<3?3-t:"🥁"}</b></div>`:null}
+ ${t>=4&&t<10?html`<div><h2 class="logo">PODIUM</h2><div class="pod">${[1,0,2].map(i=>html`<div key=${i} style=${{height:[200,150,110][i],visibility:t>=[6,5,4][i]?"visible":"hidden",animationDelay:"0s"}}><span style=${{fontSize:"2.4rem"}}>${r[i].emoji}</span><b>${r[i].name}</b><span>${["🏆 🥇","🥈","🥉"][i]}</span><span><${Num} v=${r[i].total} from=${0}/></span></div>`)}</div></div>`:null}
+ ${t>=10&&t<14?html`<div class="spot"><span class="trophy">🏆</span><h1 class="logo" style=${{fontSize:"clamp(2rem,7vw,4rem)"}}>${w.emoji} ${w.name}</h1><h2><${Num} v=${w.total} from=${0}/> pts</h2>
+ <div class="row c"><span class="tag">✅ ${acc(w)}/${Q.length} correct</span><span class="tag">🎯 ${Math.round(acc(w)/Q.length*100)}% accuracy</span><span class="tag">🔥 best streak ${w.best}</span>${w.prev>0?html`<span class="tag up">▲ climbed ${w.prev} on the last question</span>`:null}</div>
+ <p>Runners-up: ${r[1].emoji} ${r[1].name} (${r[1].total}) · ${r[2].emoji} ${r[2].name} (${r[2].total})</p></div>`:null}
+ ${t>=14?html`<div><h2 class="logo">SPECIAL AWARDS</h2><div class="grid" style=${{marginTop:12}}>${awards.map((a,i)=>html`<div class="panel" key=${i} style=${{animation:"rise .5s "+i*.25+"s both"}}><span style=${{fontSize:"2rem"}}>${a[0]}</span><h3>${a[1]}</h3><p>${a[2]}</p></div>`)}</div></div>`:null}</div>`}
+function FinalOld({s,d}){const r=rank(s.players),bs=[...s.players].sort((a,b)=>b.best-a.best)[0];
+ return html`<div class="c"><h1 class="logo" style=${{fontSize:"clamp(2rem,6vw,4rem)"}}>🏆 CHAMPION</h1><div class="pod">${[1,0,2].map(i=>html`<div key=${i} style=${{height:[190,150,120][i],animationDelay:[.8,.3,1.2][i]+"s"}}><div style=${{fontSize:"2.4rem",all:"unset",display:"block"}}>${r[i].emoji}</div><b>${r[i].name}</b><br/>${["🥇","🥈","🥉"][i]} ${r[i].total}</div>`)}</div>
+ <p class="tag">🔥 Longest streak: ${bs.name} (${bs.best})</p><p>${r[0].id===0?"You won!":"You finished #"+(r.findIndex(p=>p.id===0)+1)}</p><button class="btn big" onClick=${()=>d({t:"NEXT"})}>View results</button></div>`}
+function Summary({s,d}){const me=s.players[0],ok=me.log.filter(l=>l.ok).length,ts=me.log.filter(l=>l.el!=null),avg=ts.length?(ts.reduce((a,l)=>a+l.el,0)/ts.length).toFixed(1):"–";
+ const classAcc=Math.round(Q.map((_,i)=>s.players.filter(p=>p.log[i]&&p.log[i].ok).length/s.players.length).reduce((a,b)=>a+b,0)/Q.length*100);
+ return html`<div class="panel"><h2>Final top 5</h2><${Top5} players=${s.players}/><p>Your final rank: <b>#${rank(s.players).findIndex(p=>p.id===0)+1}</b> of ${s.players.length}</p><h2>Your results</h2><div class="row" style=${{margin:"12px 0"}}>${[["Score",me.total],["Correct",ok+"/"+Q.length],["Accuracy",Math.round(ok/Q.length*100)+"%"],["Avg time",avg+"s"],["Best streak",me.best],["Class accuracy (demo)",classAcc+"%"]].map(([k,v])=>html`<div class="panel c" key=${k} style=${{flex:"1 1 130px"}}><small>${k}</small><h3>${v}</h3></div>`)}</div>
+ ${me.log.map((l,i)=>html`<p key=${i}>${l.ok?"✅":"❌"} Q${i+1} ${Q[i].cat} — ${l.pts} pts${l.el!=null?" · "+l.el.toFixed(1)+"s":" · no answer"}</p>`)}
+ <div class="row"><button class="btn" onClick=${()=>d({t:"REPLAY"})}>↻ Replay quiz</button><button class="btn g" onClick=${()=>d({t:"BACK"})}>Back to lobby</button></div></div>`}
+function Reactions({disabled}){const[f,setF]=useState([]),last=useRef(0);const go=e=>{const n=Date.now();if(n-last.current<700)return;last.current=n;const id=n+Math.random();setF(x=>[...x,{id,e,l:10+Math.random()*80}]);setTimeout(()=>setF(x=>x.filter(y=>y.id!==id)),2000)};
+ return html`<div class="row c" style=${{marginTop:16}}>${["🔥","😂","🤯","👏","❤️","🤔"].map(e=>html`<button key=${e} class="btn g" aria-label=${"React "+e} disabled=${disabled} onClick=${()=>go(e)}>${e}</button>`)}${f.map(x=>html`<span key=${x.id} class="fl" style=${{left:x.l+"%"}}>${x.e}</span>`)}</div>`}
+function Host({s,d,mute,setMute}){const live=["question","waiting"].includes(s.phase),inGame=s.phase!=="lobby";
+ const ask=(m,a)=>{if(confirm(m))d(a)};
+ return html`<div class="host"><div class="row"><span class="logo">HOST</span>
+ ${s.phase==="lobby"?html`<label>Timer <select value=${s.limit} onChange=${e=>d({t:"LIMIT",v:+e.target.value})} style=${{minHeight:36}}>${[10,20,30].map(v=>html`<option key=${v} value=${v}>${v}s</option>`)}</select></label>`:null}
+ ${live?html`<button class="btn g" onClick=${()=>d({t:"PAUSE"})}>${s.paused?"▶ Resume":"⏸ Pause"}</button><button class="btn g" onClick=${()=>d({t:"REVEAL"})}>⏭ End & reveal</button>`:null}
+ ${["reveal","leaderboard"].includes(s.phase)?html`<button class="btn" onClick=${()=>d({t:"NEXT"})}>${s.phase==="reveal"?"Leaderboard ▸":s.qi+1>=Q.length?"Finish ▸":"Next question ▸"}</button>`:null}
+ <button class="btn g" onClick=${()=>setMute(!mute)}>${mute?"🔇 Unmute":"🔊 Mute"}</button>
+ ${inGame?html`<button class="btn g" onClick=${()=>ask("Restart the game from the beginning?",{t:"REPLAY"})}>↻ Restart</button><button class="btn g" onClick=${()=>ask("Exit to the lobby? Progress will be lost.",{t:"BACK"})}>⏏ Exit</button>`:null}</div></div>`}
+function App(){const[s,d]=useReducer(red,null,()=>init(20));const[mute,setMute]=useState(false),ph=s.phase;
+ useEffect(()=>{if(ph!=="countdown")return;beep(520,mute);const t=setInterval(()=>d({t:"CD"}),900);return()=>clearInterval(t)},[ph]);
+ useEffect(()=>{if(!["question","waiting"].includes(ph)||s.paused)return;const t=setInterval(()=>d({t:"TICK"}),100);return()=>clearInterval(t)},[ph,s.paused]);
+ useEffect(()=>{if(ph==="reveal")beep(s.players[0].log.slice(-1)[0].ok?880:220,mute)},[ph]);
+ return html`<div><header class="row" style=${{justifyContent:"space-between",marginBottom:12}}><h1 class="logo">TECHLOGICQ ⚡ LIVE</h1><span class="tag">Demo data · no backend</span></header>
+ ${ph==="countdown"?html`<div class="cd" aria-live="assertive"><b key=${s.n}>${s.n>0?s.n:"GO!"}</b></div>`:null}
+ ${ph==="lobby"?html`<${Lobby} s=${s} d=${d}/>`:null}
+ ${ph==="question"||ph==="waiting"?html`<${Question} s=${s} d=${d}/>`:null}
+ ${ph==="reveal"?html`<${Reveal} s=${s} d=${d}/>`:null}
+ ${ph==="leaderboard"?html`<${Leaderboard} s=${s} d=${d}/>`:null}
+ ${ph==="final"?html`<${Final} s=${s} d=${d} mute=${mute}/>`:null}${ph==="summary"?html`<${Summary} s=${s} d=${d}/>`:null}
+ ${["question","waiting","reveal","leaderboard"].includes(ph)?html`<${Reactions} disabled=${ph==="reveal"&&false}/>`:null}
+ <${Host} s=${s} d=${d} mute=${mute} setMute=${setMute}/></div>`}
+ReactDOM.createRoot(document.getElementById("root")).render(html`<${App}/>`);
+</script></body></html>

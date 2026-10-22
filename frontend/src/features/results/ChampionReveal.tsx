@@ -1,0 +1,12 @@
+import {useEffect,useState} from "react";import type {GameState,Command} from "../live-game/types";import {QUESTIONS as Q} from "../live-game/engine/questions";import {rank,hash} from "../live-game/engine/scoring";import {computeAwards,correct} from "../live-game/engine/awards";import {CountUp} from "../../components/animations/CountUp";import {beep} from "../../utils/sound";
+export function ChampionReveal({state:s,send,muted}:{state:GameState;send:(c:Command)=>void;muted:boolean}){const[t,setT]=useState(0),r=rank(s.players),w=r[0];
+  useEffect(()=>{const i=setInterval(()=>setT(x=>x+1),1000);return()=>clearInterval(i)},[]);
+  useEffect(()=>{if(t>=18)send({t:"NEXT"});else if(t<3)beep(400+t*120,muted);else if(t>=4&&t<=6)beep(660+t*40,muted)},[t]);
+  const conf=t>=6&&t<14?Array.from({length:28},(_,i)=><span className="cf" key={i} style={{left:`${hash(i,3)*100}%`,animationDelay:`${hash(i,5)*1.5}s`,background:["#fbbf24","#22d3ee","#e879f9","#3b82f6"][i%4]}}/>):null;
+  return <div className="c"><button className="btn g skip" onClick={()=>send({t:"NEXT"})}>Skip ▸▸</button>{conf}
+    {t<4&&<div><h2 className="logo" style={{fontSize:"clamp(1.4rem,5vw,3rem)",marginTop:20}}>THE FINAL RESULTS ARE IN...</h2><b className="big3" key={t}>{t<3?3-t:"🥁"}</b></div>}
+    {t>=4&&t<10&&<div><h2 className="logo">PODIUM</h2><div className="pod">{[1,0,2].map(i=><div key={i} style={{height:[200,150,110][i],visibility:t>=[6,5,4][i]?"visible":"hidden"}}><span style={{fontSize:"2.4rem"}}>{r[i].emoji}</span><b>{r[i].name}</b><span>{["🏆 🥇","🥈","🥉"][i]}</span><span><CountUp v={r[i].total} from={0}/></span></div>)}</div></div>}
+    {t>=10&&t<14&&<div className="spot"><span className="trophy">🏆</span><h1 className="logo" style={{fontSize:"clamp(2rem,7vw,4rem)"}}>{w.emoji} {w.name}</h1><h2><CountUp v={w.total} from={0}/> pts</h2>
+      <div className="row c"><span className="tag">✅ {correct(w)}/{Q.length} correct</span><span className="tag">🎯 {Math.round(correct(w)/Q.length*100)}% accuracy</span><span className="tag">🔥 best streak {w.best}</span>{w.prev>0&&<span className="tag up">▲ climbed {w.prev} on the last question</span>}</div>
+      <p>Runners-up: {r[1].emoji} {r[1].name} ({r[1].total}) · {r[2].emoji} {r[2].name} ({r[2].total})</p></div>}
+    {t>=14&&<div><h2 className="logo">SPECIAL AWARDS</h2><div className="grid" style={{marginTop:12}}>{computeAwards(s.players).map((a,i)=><div className="panel" key={a[1]} style={{animation:`rise .5s ${i*.25}s both`}}><span style={{fontSize:"2rem"}}>{a[0]}</span><h3>{a[1]}</h3><p>{a[2]}</p></div>)}</div></div>}</div>}

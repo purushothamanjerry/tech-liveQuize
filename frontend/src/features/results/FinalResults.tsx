@@ -1,0 +1,8 @@
+import type {GameState,Command} from "../live-game/types";import {QUESTIONS as Q} from "../live-game/engine/questions";import {rank} from "../live-game/engine/scoring";import {resultMsg} from "../live-game/messages";import {CelebrationBurst} from "../../components/feedback/CelebrationBurst";import {correct} from "../live-game/engine/awards";
+export function FinalResults({state:s,send}:{state:GameState;send:(c:Command)=>void}){const me=s.players[0],ok=correct(me),ts=me.log.filter(l=>l.el!=null),avg=ts.length?(ts.reduce((a,l)=>a+(l.el as number),0)/ts.length).toFixed(1):"–",r=rank(s.players);
+  const myRank=r.findIndex(p=>p.id===0)+1;
+  return <div className="panel">{myRank===1&&<CelebrationBurst count={24}/>}<h2 className="lbt">{resultMsg(myRank,Math.round(ok/Q.length*100))}</h2><h2>Final top 5</h2>{r.slice(0,5).map((p,i)=><p key={p.id}>{["🥇","🥈","🥉"][i]??`#${i+1}`} {p.emoji} {p.name} — {p.total}</p>)}
+    <p>Your final rank: <b>#{r.findIndex(p=>p.id===0)+1}</b> of {s.players.length}</p><h2>Your results</h2>
+    <div className="row" style={{margin:"12px 0"}}>{[["Score",me.total],["Correct",`${ok}/${Q.length}`],["Incorrect",Q.length-ok],["Accuracy",`${Math.round(ok/Q.length*100)}%`],["Avg time",`${avg}s`],["Best streak",me.best]].map(([k,v])=><div className="panel c" key={k} style={{flex:"1 1 130px"}}><small>{k}</small><h3>{v}</h3></div>)}</div>
+    {me.log.map((l,i)=><p key={i}>{l.ok?"✅":"❌"} Q{i+1} {Q[i].cat} — {l.pts} pts{l.el!=null?` · ${l.el.toFixed(1)}s`:" · no answer"}</p>)}
+    <div className="row"><button className="btn" onClick={()=>send({t:"REPLAY"})}>↻ Replay quiz</button><button className="btn g" onClick={()=>send({t:"BACK"})}>Back to lobby</button></div></div>}

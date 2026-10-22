@@ -1,0 +1,2 @@
+export function CircularTimer({left,limit}:{left:number;limit:number}){const f=left/limit,col=f<.25?"#ef4444":f<.5?"#eab308":"#22d3ee",R=36,C=2*Math.PI*R;
+  return <div className="ring" role="timer" aria-label={`${Math.ceil(left)} seconds left`}><svg width="84" height="84"><circle cx="42" cy="42" r={R} stroke="#fff2" strokeWidth="8" fill="none"/><circle cx="42" cy="42" r={R} stroke={col} strokeWidth="8" fill="none" strokeDasharray={C} strokeDashoffset={C*(1-f)} strokeLinecap="round"/></svg><em>{Math.ceil(left)}</em></div>}
